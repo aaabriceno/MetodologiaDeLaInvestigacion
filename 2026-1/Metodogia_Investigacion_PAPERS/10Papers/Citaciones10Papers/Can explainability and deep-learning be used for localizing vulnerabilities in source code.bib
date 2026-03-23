@@ -1,0 +1,137 @@
+
+@inproceedings{marchetto_can_2024,
+	address = {Lisbon Portugal},
+	title = {Can explainability and deep-learning be used for localizing vulnerabilities in source code?},
+	isbn = {979-8-4007-0588-5},
+	url = {https://dl.acm.org/doi/10.1145/3644032.3644448},
+	doi = {10.1145/3644032.3644448},
+	abstract = {Security vulnerabilities are weaknesses of software due for instance to design flaws or implementation bugs that can be exploited and lead to potentially devastating security breaches. Traditionally, static code analysis is recognized as effective in the detection of software security vulnerabilities but at the expense of a high human effort required for checking a large number of produced false positive cases. Deep-learning methods have been recently proposed to overcome such a limitation of static code analysis and detect the vulnerable code by using vulnerability-related patterns learned from large source code datasets. However, the use of these methods for localizing the causes of the vulnerability in the source code, i.e., localize the statements that contain the bugs, has not been extensively explored.},
+	language = {en},
+	urldate = {2025-11-08},
+	booktitle = {Proceedings of the 5th {ACM}/{IEEE} {International} {Conference} on {Automation} of {Software} {Test} ({AST} 2024)},
+	publisher = {ACM},
+	author = {Marchetto, Alessandro},
+	month = apr,
+	year = {2024},
+	pages = {110--119},
+	annote = {ObjetivoEvaluar si modelos de deep learning usados para detectar fragmentos de código vulnerables (VulDeePecker y JavaBERT) pueden, junto con una técnica de explicabilidad (SHAP), localizar las sentencias específicas que causan la vulnerabilidad en el código fuente Java.
+Metodología
+
+
+Modelos:
+
+
+VulDeePecker: tokenización (Word2Vec/Code2Vec) → BLSTM para clasificar gadgets de código.
+
+
+JavaBERT: transformer BERT para secuencias largas de código, con fine-tuning para detección.
+
+
+
+
+Explicabilidad: SHAP (modelo-agnóstico) para obtener importancia de tokens y agregarla por sentencia. Dos umbrales (TH\_06avg y TH\_06max) seleccionan sentencias “relacionadas con vulnerabilidad”.
+
+
+Datos: Project KB (real-world Java): 3,770 archivos (antes/después del fix), 20,155 funciones; 12\% vulnerables (con mapeo a CVE). Split: 80/10/10 (train/val/test).
+
+
+Protocolo: entrenan/fine-tunean cada modelo; evalúan detección a nivel función (RQ1) y localización a nivel sentencia con SHAP (RQ2). Además miden “distraction degree” (porcentaje de sentencias seleccionadas erróneamente) (RQ3) y analizan top-features (RQ4).
+
+
+Métricas: Balanced Accuracy, Precision, Recall, F1 (para función y para sentencia).
+
+
+Validación (resultados clave)
+
+
+Detección (función):
+
+
+JavaBERT: bAcc ≈ 0.95; F1 ≈ 0.88–0.91 (según épocas).
+
+
+VulDeePecker: bAcc ≈ 0.67; F1 ≈ 0.60.
+
+
+Un modelo externo (JavaBERT\_VDET) sin coherencia de dominio rinde mal (precisión {\textless}15\%), subrayando la importancia del fine-tuning coherente.
+
+
+
+
+Localización (sentencia):
+
+
+JavaBERT + SHAP: F1 ≈ 0.39–0.43, bAcc ≈ 0.51–0.56.
+
+
+VulDeePecker + SHAP: F1 ≈ 0.25–0.29, bAcc ≈ 0.51–0.53.
+
+
+Las sentencias marcadas por SHAP suelen quedar cerca de las realmente vulnerables (distancia promedio {\textless} {\textasciitilde}9 sentencias), pero la precisión es limitada.
+
+
+
+
+“Distraction degree” (porcentaje de sentencias seleccionadas erróneamente):
+
+
+JavaBERT {\textasciitilde} 29\% (estable).
+
+
+VulDeePecker variable y alto (≈ 21\%–63\%).
+
+
+
+
+Features usadas: predominan símbolos y keywords del lenguaje; VulDeePecker se apoya en pocos tokens muy influyentes, JavaBERT distribuye la importancia en un conjunto más amplio.
+
+
+Fortalezas
+
+
+Protocolo claro de detección + explicabilidad con RQs, métricas estándar y fine-tuning controlado.
+
+
+Evidencia empírica de que JavaBERT detecta bien a nivel función y que SHAP puede acercar al desarrollador a la zona vulnerable (aunque con ruido).
+
+
+Análisis de umbralización (dos TH), distraction, y top-features que ayuda a interpretar qué están aprendiendo los modelos.
+
+
+Debilidades / Amenazas a la validez
+
+
+Localización fina aún modesta (F1 bajo a nivel sentencia): explicabilidad sobre modelos entrenados a nivel función no basta para pinpoint exacto.
+
+
+Un solo dataset (Project KB) y desbalance (12\% vulnerables) → generalización limitada; falta evaluar más proyectos/lenguajes.
+
+
+Pocas familias de modelos (BLSTM y BERT) y una sola técnica XAI (SHAP); otros diseños/white-box XAI podrían cambiar el panorama.
+
+
+Sensibilidad a tokenización/representación tipo NLP; riesgo de correlaciones espurias (símbolos/keywords) en vez de causas reales.
+
+
+
+Ficha (lista para tu tabla)
+
+
+Paper (cita): Marchetto (AST 2024), Can explainability and deep-learning be used for localizing vulnerabilities in source code?
+
+
+Dominio: Detección y localización de vulnerabilidades en código fuente Java (estático).
+
+
+Técnica / Enfoque: JavaBERT / VulDeePecker + SHAP para priorizar sentencias (TH\_06avg, TH\_06max).
+
+
+Cómo encaja en el dominio: usa DL para detectar funciones vulnerables y explicabilidad para apuntar líneas candidatas (apoyo al debugging de seguridad).
+
+
+Aporte clave: Muestra que la detección con DL puede ser fuerte (F1≈0.88 con JavaBERT), pero que la localización con XAI es solo parcialmente adecuada; cuantifica ruido (distraction) y analiza features que guían decisiones.
+
+
+},
+	file = {PDF:C\:\\Users\\PC\\Zotero\\storage\\IPID64FN\\Marchetto - 2024 - Can explainability and deep-learning be used for localizing vulnerabilities in source code.pdf:application/pdf},
+}

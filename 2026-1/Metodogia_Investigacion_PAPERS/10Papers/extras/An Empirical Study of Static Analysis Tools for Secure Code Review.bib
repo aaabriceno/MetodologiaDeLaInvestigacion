@@ -1,0 +1,64 @@
+
+@inproceedings{charoenwet_empirical_2024,
+	address = {Vienna Austria},
+	title = {An {Empirical} {Study} of {Static} {Analysis} {Tools} for {Secure} {Code} {Review}},
+	isbn = {979-8-4007-0612-7},
+	url = {https://dl.acm.org/doi/10.1145/3650212.3680313},
+	doi = {10.1145/3650212.3680313},
+	abstract = {Early identiﬁcation of security issues in software development is vital to minimize their unanticipated impacts. Code review is a widely used manual analysis method that aims to uncover security issues along with other coding issues in software projects. While some studies suggest that automated static application security testing tools (SASTs) could enhance security issue identiﬁcation, there is limited understanding of SAST’s practical eﬀectiveness in supporting secure code review. Moreover, most SAST studies rely on synthetic or fully vulnerable versions of the subject program, which may not accurately represent real-world code changes in the code review process.},
+	language = {en},
+	urldate = {2025-10-09},
+	booktitle = {Proceedings of the 33rd {ACM} {SIGSOFT} {International} {Symposium} on {Software} {Testing} and {Analysis}},
+	publisher = {ACM},
+	author = {Charoenwet, Wachiraphan and Thongtanunam, Patanamon and Pham, Van-Thuan and Treude, Christoph},
+	month = sep,
+	year = {2024},
+	pages = {691--703},
+	annote = {Abstract:
+Identificar los problemas de seguridad en el desarrollo de software es fundamental para minimizar sus impactos imprevistos.
+Algunos estudios sugieren que las herramientas AUTOMATIZADAS DE PRUEBAS DE SEGURIDAD DE APLICACIONES ESTATICAS (SAST), podrian mejorar la identificacion del problemas de seguridad, sin embargo se conoce poco sobre la eficx{\textbar}acia práctica de las SAST  a la hora de respaldar la revisión pura del código. A esto se le añade que la mayoría de estudios se basan en versiones sinteticas o totalmente vulnerables del programa en cuestión, y esto hace que no se pueda representar con precision los cambios reales del código en proceso de revisión del código.
+Revision de Codigo: Es un metodo de analisis manual muy utilizado que tiene por objeto descrubrir problemas de seguridad, en los proyectos de softrware.
+
+Estudiaremos las SAST en C/C++ utilizando un conjunto de datos de cambios reales en el código que contribuyeron a vulnerabilidades explotadas; si bien es cierto que la eficacia es importante, nosotros cuantificamos los beneficios potenciales cuando las funciones modificadas se priorizan mediante advertencias de las SAST. El conjunto de datos comprende 319 vulnerabilidades reales del mundo procedentes de 815 compromisos que contribuyen a la vulnerabilidad (VCC) en 92 proyectos de C/C++.
+A todo esto obtenemos un resultado que revela que una SAST puede generar adverencias en funciones vulnerables del 52\% de las VCC . Priorizar las funciones modificadas con advertencias SAST puedn mejorar la precisión y reducir falsas alarmas iniciales en un 13\%
+Introduccion:
+Lo que se investiga en este paper parte de 3 aspectos clave:
+
+
+La eficacia de las SAST
+
+
+Los posibles beneficios de las revisiones de código respaldadas por las SAST
+
+
+Tiempo de espera asociado
+
+
+Las SAST que estudiamos son las sgtes:
+
+
+Cppcheck
+
+
+CodeChecker
+
+
+CodeQL
+
+
+FlawFinder
+
+
+Infer
+
+
+Para medir la eficacia de cada SAST, analizamos cuantas VCC pueden detectar las herramientas, con respecto a los beneficios , se analizan cuantas funciones  vulnerables se pueden identificar con un esfuerzo limitado de revision de codigo cuando se priorizan las funciones modificadas en funcion de la información de las advertencias de SAST. y por ultimo se mide el tiempo que tarda cada herramienta en analizar caca VCC.
+Tras todo este analisis, sigue sin estar claro en que medidad los SAST pueden ser rentables
+Metología:
+Conclusiones:
+Se realizó un estudio empirico de para comprender los beneficios practicos de las pruebas SAST DE C{\textbackslash}C++ para revisiones de codigo seguras. Los resultados muestran que el 52\% de los VCC pueden ser detectadas por una sola herramienta con funciones modificadas que contiene codigo vulnerable. Si se combinan herramientas las eficacia puede aumentar en un 26\%.
+Algo que se recomienda es que los desarrolladores de SAST deberían mejorar los consejos sobre vulnerabilidades en las advertencias y mejorar la información sobre la gravedad de las advertencias. En el futuro se podría mejorar los SAST en cuanto a las vulnerabilidades no detectadas, explorar las reglas SAST para el código de desarrollo, investigar técnicas eficaces para utilizar los SAST en revisiones de código seguro y explorar un enfoque conjunto que implique múltiples SAST. También publicamos el marco de evaluación SAST [35] y el conjunto de datos para apoyar las próximas investigaciones.
+
+},
+	file = {PDF:C\:\\Users\\PC\\Zotero\\storage\\ZBZU7VVN\\Charoenwet et al. - 2024 - An Empirical Study of Static Analysis Tools for Secure Code Review.pdf:application/pdf},
+}
